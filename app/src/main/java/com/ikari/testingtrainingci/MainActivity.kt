@@ -1,8 +1,12 @@
 package com.ikari.testingtrainingci
 
+import android.opengl.Visibility
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+import kotlin.system.measureTimeMillis
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,8 +14,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loginBtn.setOnClickListener {
-            if(login(username.text.toString(),password.text.toString()))
-                loginBtn.text = "Log Out"
+            if(login(username.text.toString(),password.text.toString())){
+                logoutBtn.visibility = View.VISIBLE
+                loginBtn.visibility = View.GONE
+                username.visibility = View.GONE
+                password.visibility = View.GONE
+            }
+        }
+        logoutBtn.setOnClickListener{
+            if(Calendar.getInstance().time.seconds%2!=0){
+                logoutBtn.visibility = View.VISIBLE
+                loginBtn.visibility = View.GONE
+                username.visibility = View.GONE
+                password.visibility = View.GONE
+            }
+
         }
     }
 }
