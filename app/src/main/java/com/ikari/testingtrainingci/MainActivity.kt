@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         loginBtn.setOnClickListener {
-            if(username.text.toString()=="admin"&&password.text.toString()=="admin")
+            if(login(username.text.toString(),password.text.toString()))
                 loginBtn.text = "Log Out"
         }
     }
