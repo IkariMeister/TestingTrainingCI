@@ -10,10 +10,12 @@ import org.junit.Before
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class ExampleUnitTest {
+class KataAppTest {
 
     private val anyString = "gfdgdg"
     private val admin = "admin"
+    private val anyInvalidComma = "admin,"
+    private val anyInvalidDot = "admin."
     private lateinit var sut : KataApp
 
     @Before
@@ -59,6 +61,26 @@ class ExampleUnitTest {
         sut = KataApp(clock)
         val result = sut.logout()
         assertFalse(result)
+    }
+
+    @Test
+    fun `Given a username containing , validate should return false`(){
+
+        val result = sut.validateUserName(anyInvalidComma)
+        assertFalse(result)
+    }
+
+    @Test
+    fun `Given a username containing dot validate should return false`(){
+
+        val result = sut.validateUserName(anyInvalidDot)
+        assertFalse(result)
+    }
+
+    @Test
+    fun `Given a valid username  validate should return true`(){
+        val result = sut.validateUserName(admin)
+        assertTrue(result)
     }
 
 //    @Test
