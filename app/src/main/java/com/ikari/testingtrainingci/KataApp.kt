@@ -1,4 +1,10 @@
 package com.ikari.testingtrainingci
 
+import java.util.*
 
-fun login(user:String, pass:String) = user=="admin" && pass=="admin"
+class KataApp(val clock:Clock = Clock()) {
+    fun login(user: String, pass: String) = user == "admin" && pass == "admin"
+    fun logout(): Boolean {
+        return clock.now % 2 == 0
+    }
+}

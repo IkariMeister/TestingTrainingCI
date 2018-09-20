@@ -13,8 +13,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val app = KataApp()
         loginBtn.setOnClickListener {
-            if(login(username.text.toString(),password.text.toString())){
+            if(app.login(username.text.toString(),password.text.toString())){
                 logoutBtn.visibility = View.VISIBLE
                 loginBtn.visibility = View.GONE
                 username.visibility = View.GONE
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         logoutBtn.setOnClickListener{
-            if(Calendar.getInstance().time.seconds%2!=0){
+            if(app.logout()){
                 logoutBtn.visibility = View.VISIBLE
                 loginBtn.visibility = View.GONE
                 username.visibility = View.GONE
